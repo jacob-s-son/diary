@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.3'
 gem 'haml'
 gem 'rails-backbone'
+gem 'devise', '1.5.2'
 
 
 group :production do
