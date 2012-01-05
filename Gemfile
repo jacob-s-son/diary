@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
+gem 'haml'
+gem 'rails-backbone'
+
 
 group :production do
   gem 'pg'
@@ -20,5 +23,5 @@ gem 'jquery-rails'
 
 
 group :test do
-  gem 'turn', '0.8.2', :require => false
+  gem 'rspec', '> 2.0'
 end
