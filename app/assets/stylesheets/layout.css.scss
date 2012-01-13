@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+  
+  div#wrapper {
+    width:1280px;
+    margin: 0 auto;
+    
+    div#current-user-container {
+      float:right;
+      height:50px;
+      margin-top:50px;
+    }
+  
+    div.container {
+      background-image:url('/assets/book.png');
+      background-repeat: no-repeat;
+      background-position: top;
+    
+      width: 990px;
+      height: 624px;
+      margin: 0 auto;
+      margin-top: 70px;
+      clear:both;
+    }
+  }
+}

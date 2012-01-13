@@ -1,0 +1,3 @@
+#current-user-container
+  You are currently logged in as
+  %a{ :href => "http://www.google.lv" }= current_user ? current_user.email : 'Anonymous'

@@ -3,6 +3,7 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @notes = Note.all
+    @current_date = Date.today
 
     respond_to do |format|
       format.html # index.html.erb
