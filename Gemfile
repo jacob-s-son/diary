@@ -10,10 +10,6 @@ group :production do
   gem 'pg'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
-
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
@@ -23,6 +19,8 @@ end
 gem 'jquery-rails'
 
 
-group :test do
-  gem 'rspec', '> 2.0'
+group :development, :test do
+  gem "rspec-rails", "~> 2.6"
+  gem 'sqlite3'
+  gem 'shoulda-matchers'
 end
