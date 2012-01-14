@@ -11,4 +11,6 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/diary
+//= require bootstrap-twipsy
+//= require bootstrap-popover
 //= require_tree .

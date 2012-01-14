@@ -9,7 +9,7 @@
   }
 }
 
-div.note-container {
+div.notes-container {
   float: left;
   margin-top: 20px;
   text-align: left;
@@ -61,4 +61,8 @@ div.note {
 
 div.note:hover {
   background-color: green;
+}
+
+div.modal {
+  display: none;
 }

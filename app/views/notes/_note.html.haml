@@ -1,8 +1,8 @@
-.note
+.note{ :"data-content" => "This is note description ##{nr}", :"data-original-title" => "Note ##{nr} title!", :id => "note-container-#{@current_date.day}-#{nr}" }
   .time
     %span.hours= "#{'%02d' % nr}."
     %sup 00
   .note-title
-    Some Text
+    = "Note ##{nr} title!"
   .delete
     %a{ :href => 'http://www.times.lv' } Delete

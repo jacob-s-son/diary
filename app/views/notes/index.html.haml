@@ -3,10 +3,20 @@
     = @current_date.to_s
   #day-right
     = (@current_date + 1.day).to_s
-#notes-left.note-container
+#notes-left.notes-container
   - (1..24).each do |i|
     = render :partial => 'note', :locals => {:nr => i-1}
 
-#notes-right.note-container
+#notes-right.notes-container
   - (1..24).each do |i|
     = render :partial => 'note', :locals => {:nr => i-1}
+
+#note-modal-template{:class => "modal hide fade in"}
+  .model-header
+    %a.close{:href => "#"}×
+    %h3= "Edit Note For #{@current_date.to_s}"
+  .modal-body
+    %p This is note description #
+  .modal-footer
+    %a.btn.primary{:href => "#"} Primary
+    %a.btn.secondary{:href => "#"} Secondary
