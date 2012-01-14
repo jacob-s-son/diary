@@ -1,34 +1,64 @@
 #day-block {
-  display:inline-block;
-  margin-top:30px;
-  width:100%;
+  display: inline-block;
+  margin-top: 30px;
+  width: 100%;
   
   #day-left {
-    float:left;
-    margin-left:60px;
+    float: left;
+    margin-left: 60px;
   }
+}
 
-  #day-left {
-    float:left;
-  }
+div.note-container {
+  float: left;
+  margin-top: 20px;
+  text-align: left;
+  border-bottom: solid;
+  border-top: solid;
+  border-width: 2px;
 }
 
 div#notes-left {
-  width:450px;
-  float:left;
-  margin-left:30px;
-  margin-top:20px;
-  text-align:left;
+  width: 420px;
+  margin-left: 60px;
 }
 
 div#notes-right {
-  width:450px;
-  float:left;
-//  margin-left:30px;
-  margin-top:20px;
-  text-align:left;
+  margin-left: 45px;
+  width: 400px;
 }
 
 div.note {
+  height: 19px;
+  line-height: 19px;
+  border-top: solid;
+  border-bottom: solid;
+  border-width: 1px;
+  vertical-align: middle;
   
+  div.time {
+    display: inline-block;
+    font-weight: bold;
+    
+    span.hours {
+    }
+    
+    sup {
+      margin-left: -5px;
+    }
+  } 
+  
+  div.note-title {
+   display: inline-block;
+   margin-left: 10px;
+  }
+  
+  div.delete {
+    display: inline-block;
+    float: right;
+  }
+}
+
+div.note:hover {
+  background-color: green;
 }
