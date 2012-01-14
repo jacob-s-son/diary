@@ -23,4 +23,6 @@ group :development, :test do
   gem "rspec-rails", "~> 2.6"
   gem 'sqlite3'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'ruby-debug19'
 end
