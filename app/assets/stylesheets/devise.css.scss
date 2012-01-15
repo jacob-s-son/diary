@@ -1,0 +1,18 @@
+body {
+  div#wrapper {
+    width:1280px;
+    margin: 0 auto;
+      
+    div.container {
+      background-image:url('/assets/book.png');
+      background-repeat: no-repeat;
+      background-position: top;
+    
+      width: 990px;
+      height: 624px;
+      margin: 0 auto;
+      margin-top: 70px;
+      clear:both;
+    }
+  }
+}

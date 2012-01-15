@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 gem 'haml'
 gem 'rails-backbone'
 gem 'devise', '1.5.2'
+gem 'simple_form', :git => "https://github.com/plataformatec/simple_form.git", :ref => '9038c6b6d3'
 
 
 group :production do
