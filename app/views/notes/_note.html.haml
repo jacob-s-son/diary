@@ -1,8 +1,10 @@
-.note{ :"data-content" => "This is note description ##{nr}", :"data-original-title" => "Note ##{nr} title!", :id => "note-container-#{@current_date.day}-#{nr}" }
+.note{ :"data-description" => note.description, :"data-original-title" => note.title,
+       :id => "note-container-#{note.id}", :"data-note-date" => side_date, :"data-hour" => hour,
+       :"data-action" => note.new_record? ? notes_path : note_path(note.id) }
   .time
-    %span.hours= "#{'%02d' % nr}."
+    %span.hours= "#{'%02d' % hour}."
     %sup 00
   .note-title
-    = "Note ##{nr} title!"
+    = note.title
   .delete
     %a{ :href => 'http://www.times.lv' } Delete

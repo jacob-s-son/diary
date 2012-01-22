@@ -2,21 +2,32 @@
   #day-left
     = @current_date.to_s
   #day-right
-    = (@current_date + 1.day).to_s
+    = @next_date
 #notes-left.notes-container
-  - (1..24).each do |i|
-    = render :partial => 'note', :locals => {:nr => i-1}
+  - note_entries(@notes, @current_date).each do |entry|
+    = render :partial => 'note', :locals => { :note => entry[:note], :hour => entry[:hour], :side_date => @current_date }
 
 #notes-right.notes-container
-  - (1..24).each do |i|
-    = render :partial => 'note', :locals => {:nr => i-1}
+  - note_entries(@notes, @next_date).each do |entry|
+    = render :partial => 'note', :locals => { :note => entry[:note], :hour => entry[:hour], :side_date => @next_date }
 
+- @note = Note.new
 #note-modal-template{:class => "modal hide fade in"}
-  .model-header
-    %a.close{:href => "#"}×
-    %h3= "Edit Note For #{@current_date.to_s}"
-  .modal-body
-    %p This is note description #
-  .modal-footer
-    %a.btn.primary{:href => "#"} Primary
-    %a.btn.secondary{:href => "#"} Secondary
+  .form-container
+    .modal-header
+      %a.close{:href => "#"}×
+      %h3= "Edit Note For #{@current_date.to_s}" #FIXME: this one currently works only for the left side
+    = simple_form_for(@note, :remote => true, :html => { :"data-method" => :put, :"data-type" => :json }) do |f|
+      .modal-body
+        #submit-result-msg{ :style => 'display:none' }
+          .notice
+          %ul
+        .inputs
+          = f.input :title
+          = f.input :description, :as => :text, :input_html => { :cols => 50, :rows => 3 }
+          = f.input :planned_time, :as => :hidden
+      .modal-footer.actions
+        = f.button :submit, "Save note"
+        %a.btn.secondary{ :href => "#" } Secondary
+        #form-loader{ :style => 'display:none;' }
+          = image_tag "form_loader.gif"

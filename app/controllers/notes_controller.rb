@@ -2,8 +2,9 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
-    @current_date = Date.today
+    @current_date = Date.today || params[:opened_day]
+    @next_date    = @current_date.next_day
+    @notes        = Note.user_notes_for_two_days current_user, @current_date
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +42,9 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(params[:note])
+    @note      = Note.new(params[:note])
+    @note.user = current_user
+
 
     respond_to do |format|
       if @note.save
@@ -49,7 +52,7 @@ class NotesController < ApplicationController
         format.json { render json: @note, status: :created, location: @note }
       else
         format.html { render action: "new" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.json { render json: @note.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -62,10 +65,10 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update_attributes(params[:note])
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => { :notice => 'Note was successfully updated.' }  }
       else
         format.html { render action: "edit" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.json { render json: @note.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
