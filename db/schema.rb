@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114120710) do
+ActiveRecord::Schema.define(:version => 20120121175232) do
 
   create_table "notes", :force => true do |t|
     t.text     "description"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120114120710) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.time     "planned_time"
+    t.datetime "planned_time"
   end
 
   add_index "notes", ["id"], :name => "index_notes_on_id", :unique => true
