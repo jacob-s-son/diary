@@ -1,0 +1,78 @@
+div#wrapper {
+  width: 1280px;
+  margin: 0 auto;
+    
+  div.container {
+    background-image: url('/assets/book.png');
+    background-repeat: no-repeat;
+    background-position: top;
+  
+    width: 990px;
+    height: 624px;
+    margin: 0 auto;
+    margin-top: 70px;
+    clear: both;
+    
+    .form-container {
+      text-align:left;
+      margin-top: 40px;
+      margin-left: 60px;
+      float: left;
+      width: 400px;
+      
+      .inputs {
+        float: left;
+        display: block;
+        clear: both;
+        width:400px;
+        
+        .input {
+          margin-left: 10px;
+          margin-top: 10px;
+          display: inline-block;
+          width: 400px;
+          
+          label, input {
+            float:left;
+            text-align: left;
+          }
+          
+          label {
+            width: 170px;
+          }
+        }
+        
+        .boolean {
+          display: inline-block;
+          label {
+            margin-left: 15px;
+            padding-top: 0px;
+            width: 100px;
+            float: left;
+          }
+          input {
+           margin-left: 170px; 
+          }
+        } //input div container for boolean fields
+      } //inputs container for all inputs in form     
+      .actions {
+        display: block;
+        float: left;
+        width: 230px;
+        clear: both;
+        padding-left: 150px;
+        input {
+          width: 110px;
+          float: left;
+          margin-left: 27px;
+ //         float: left;
+ //          margin: 0 0 0 0;
+        }
+      } // actions container
+    } //form container
+    
+    .shared-links {
+      clear:both;
+    }
+  } //div container
+} // wrapper
