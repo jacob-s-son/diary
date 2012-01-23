@@ -49,7 +49,7 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render json: @note, status: :created, location: @note }
+        format.json { render :json => { :notice => 'Note was successfully saved.', :note_id => @note.id }  }
       else
         format.html { render action: "new" }
         format.json { render json: @note.errors.full_messages, status: :unprocessable_entity }

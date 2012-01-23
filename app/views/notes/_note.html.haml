@@ -1,4 +1,4 @@
-.note{ :"data-description" => note.description, :"data-original-title" => note.title,
+.note{ :"data-description" => note.description.to_s, :"data-title" => note.title.to_s,
        :id => "note-container-#{note.id}", :"data-note-date" => side_date, :"data-hour" => hour,
        :"data-action" => note.new_record? ? notes_path : note_path(note.id) }
   .time

@@ -1,7 +1,7 @@
 jQuery ->
   window.noteForm = new ModalForm "note-modal-template"
-  $("#notes-left div.note").popover { placement:"left", content:"data-description" }
-  $("#notes-right div.note").popover { placement:"right", content:"data-description" }
+  $("#notes-left div.note").popover { placement:"left", content:"data-description", title:"data-title" }
+  $("#notes-right div.note").popover { placement:"right", content:"data-description", title:"data-title" }
   
   window.notes = $("div.note").toArray().reduce (memo, val) ->
     el  = val
@@ -70,7 +70,7 @@ class ModalForm
       @modal_form.find("input, textarea").removeAttr "disabled"
   
   toggle_loading: =>
-    @modal_form.find(".actions > a, .actions > input").toggle()
+    @modal_form.find(".actions > button, .actions > input").toggle()
     @modal_form.find(".actions > #form-loader").toggle()
   
   toggle_form_state: =>
@@ -80,7 +80,9 @@ class ModalForm
 
   success: (event, data, status, xhr) =>
     @toggle_form_state()
-    @message_box.show(status, jQuery.parseJSON(xhr.responseText)["notice"])
+    response = jQuery.parseJSON(xhr.responseText)
+    @note_id = response["note_id"] if response["note_id"]
+    @message_box.show(status, response["notice"])
     @modal_content.modal('hide')
     
     
@@ -107,11 +109,11 @@ class ModalForm
     @modal_form.attr "action", @action
 
     #adjusting form header
-    @modal_content.find('h3').text "Edit note for #{@date} #{@hour}<sup>00</sup>"
+    @modal_content.find('h3').text "Edit note for #{@date} #{@hour}:00"
   
   note_container_update: =>
     if @message_box.status == "success"
-      window.notes["#{@date}"]["#{@hour}"].update(@modal_form.serializeArray())
+      window.notes["#{@date}"]["#{@hour}"].update(@modal_form.serializeArray(), @note_id)
     
     @message_box.hide()
     @message_box.status = null
@@ -127,17 +129,21 @@ class Note
     
   click: =>
     description     = @note_dom.data "description"
-    title           = @note_dom.data "original-title"
+    title           = @note_dom.data "title"
     date            = @note_dom.data "note-date"
     hour            = @note_dom.data "hour"
     action          = @note_dom.data "action"
     
     window.noteForm.show_modal description, title, date, hour, action, @note_id
   
-  update: (fields) =>
+  update: (fields, note_id) =>
     for val in fields
       if attr = val.name.match(/note\[(title|description)\]/)
         @note_dom.attr "data-#{attr[1]}", val.value
         @note_dom.find(".note-title").first().text val.value if attr[1] == 'title'
+    unless @note_id.match /[0-9]/
+      @note_id = note_id
+      @note_dom.attr "data-action", "#{@note_dom.data("action")}/#{note_id}"
+      @note_dom.attr "id", "#{@note_dom.attr 'id'}#{note_id}"
     
     
