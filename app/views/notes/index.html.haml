@@ -21,13 +21,14 @@
       .modal-body
         #submit-result-msg{ :style => 'display:none' }
           .notice
-          %ul
+          .error
+            %ul
         .inputs
           = f.input :title
           = f.input :description, :as => :text, :input_html => { :rows => 4 }
           = f.input :planned_time, :as => :hidden
       .modal-footer.actions
         = f.button :submit, "Save note", :class => "btn primary"
-        %button.btn{ :type => :reset } Secondary
+        %button.btn{ :type => :reset } Cancel
         #form-loader{ :style => 'display:none;' }
           = image_tag "form_loader.gif"

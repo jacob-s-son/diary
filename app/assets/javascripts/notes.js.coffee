@@ -17,7 +17,7 @@ class MsgBox
     @status = null
   
   hide_errors: =>
-    @box.find('ul').hide()
+    @box.find('.error').hide()
   
   hide_notices: =>
     @box.find('.notice').hide()
@@ -83,7 +83,7 @@ class ModalForm
     response = jQuery.parseJSON(xhr.responseText)
     @note_id = response["note_id"] if response["note_id"]
     @message_box.show(status, response["notice"])
-    @modal_content.modal('hide')
+    setTimeout (=> @modal_content.modal('hide') ), 1500
     
     
   error: (event, xhr, status, error) =>

@@ -65,17 +65,45 @@ div.note:hover {
 
 div.modal {
   display: none;
-  height: 300px;
+  height: 350px;
   
   .form-container {
     text-align: left;
+    
+    #submit-result-msg {
+      margin-left: 0px;
+      
+      div {
+        width: 315px;
+        border: 2px solid;
+        padding: 0px;
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+      }
+      .notice {
+        color: #254117;
+        border-color: #254117;
+        background-color: #4CC417;
+      }
+      .error {
+        width: 315px;
+        border-color: #CF0000;
+        padding: 0px;
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+        background-color: #f0f0f0;        
+      }
+      
+      ul {
+        margin-top: 5px;
+        li {
+          color: red;
+        }
+      }
+    }
 //    .error_messages {
 //      width: 400px;
 //      border: 2px solid #CF0000;
-//      padding: 0px;
-//      padding-bottom: 12px;
-//      margin-bottom: 20px;
-//      background-color: #f0f0f0;
 //      font-size: 12px;
 //    }
 //
