@@ -1,5 +1,6 @@
 Diary::Application.configure do
   config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::INFO
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
