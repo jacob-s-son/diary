@@ -65,7 +65,7 @@ div.note:hover {
 
 div.modal {
   display: none;
-  height: 350px;
+//  height: 350px;
   
   .form-container {
     text-align: left;
@@ -127,6 +127,7 @@ div.modal {
     .actions {
       display: block;
       clear: both;
+      margin-bottom: 0px;
       
       input, button {
         float: left;
